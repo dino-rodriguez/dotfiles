@@ -37,10 +37,13 @@ fi
 read -n "yn?install mac apps(y/n)? "
 if [[ "$yn" == [Yy] ]] ;
 then
-  brew cask install iterm2
-  brew cask install spectacle
-  brew cask install docker
-  brew cask install spotify
+  brew install --cask iterm2
+  brew install --cask spectacle
+  brew install --cask docker
+  brew install --cask spotify
+  brew install --cask notion
+  brew install --cask ledger-live
+  brew install --cask monero-wallet 
 fi
 
 # dotfiles
