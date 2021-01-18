@@ -25,6 +25,7 @@ then
   git config --global pull.rebase true
 
   brew install cask
+  brew install google-cloud-sdk
   brew install hub
   brew install rg
   brew install tmux 
