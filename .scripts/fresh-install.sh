@@ -25,7 +25,6 @@ then
   git config --global pull.rebase true
 
   brew install cask
-  brew install google-cloud-sdk
   brew install hub
   brew install rg
   brew install tmux 
@@ -45,6 +44,7 @@ then
   brew install --cask notion
   brew install --cask ledger-live
   brew install --cask monero-wallet 
+  brew install --cask google-cloud-sdk
 fi
 
 # dotfiles
