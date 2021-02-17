@@ -54,6 +54,16 @@ set autoindent
 "2-space YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"where splits occur 
+set splitbelow
+set splitright
+
 "aesthetic
 syntax enable
 colorscheme default
