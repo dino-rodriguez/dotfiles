@@ -7,9 +7,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 "Vundle plugins
 call vundle#begin()
+
+"package manager
 Plugin 'VundleVim/Vundle.vim'
+
+"syntax highlighting and indentation support
 Plugin 'sheerun/vim-polyglot'
+
+"autocompletion
 Plugin 'lifepillar/vim-mucomplete'
+
 call vundle#end()
 filetype indent plugin on
 
@@ -26,11 +33,14 @@ set belloff+=ctrlg "if Vim beeps during completion
 let g:mucomplete#enable_auto_at_startup = 1
 
 "yanks to system clipboard
-"paste with `p` or `cmd-v`
+"paste with `cmd-v`
 set clipboard=unnamed
 
 "scroll when there are 10 rows before bottom or top of screen
 set scrolloff=10
+
+"highlight all matching phrases on search
+set hlsearch
 
 "wrap markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
@@ -47,6 +57,12 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "aesthetic
 syntax enable
 colorscheme default
+
+"turn on line numbers
+set number
+
+"change line number color
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 "remove trailing whitespace
 fun! TrimWhitespace()
