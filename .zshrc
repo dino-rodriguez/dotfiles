@@ -215,6 +215,14 @@ bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+### PATH
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/Users/dinorodriguez/.local/share/solana/install/active_release/bin:$PATH"
+
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init - --path)"
+eval "$(pyenv virtualenv-init -)"
 #
 # -> End zsh configuration
 #
+

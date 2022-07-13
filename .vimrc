@@ -10,12 +10,14 @@ call vundle#begin()
 
 "package manager
 Plugin 'VundleVim/Vundle.vim'
-
 "syntax highlighting and indentation support
 Plugin 'sheerun/vim-polyglot'
-
 "autocompletion
 Plugin 'lifepillar/vim-mucomplete'
+"syntax checking
+Plugin 'scrooloose/syntastic'
+"typescript syntax checking
+"Plugin 'Quramy/tsuquyomi'
 
 call vundle#end()
 filetype indent plugin on
@@ -29,7 +31,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c   "shut off completion messages
 set belloff+=ctrlg "if Vim beeps during completion
 
-" enable automatic completion at startup
+"enable automatic completion at startup
 let g:mucomplete#enable_auto_at_startup = 1
 
 "yanks to system clipboard
@@ -54,6 +56,13 @@ set autoindent
 "2-space YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+"aesthetic
+syntax enable
+colorscheme default
+
+"turn on line numbers
+set number
+
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -64,16 +73,6 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-"aesthetic
-syntax enable
-colorscheme default
-
-"turn on line numbers
-set number
-
-"change line number color
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
 "remove trailing whitespace
 fun! TrimWhitespace()
     let l:save=winsaveview()
@@ -81,3 +80,16 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+
+"syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1 
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['flake8', 'mypy']
