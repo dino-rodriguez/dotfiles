@@ -221,7 +221,11 @@ export PATH="/Users/dinorodriguez/.local/share/solana/install/active_release/bin
 
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init - --path)"
-eval "$(pyenv virtualenv-init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completionval "$(pyenv virtualenv-init -)"
+
 #
 # -> End zsh configuration
 #

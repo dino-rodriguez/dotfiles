@@ -16,7 +16,9 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 read -n "yn?install and homebrew and packages(y/n)? "
 if [[ "$yn" == [Yy] ]] ;
 then
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/dino/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   brew install git
   git config --global user.name "Dino Rodriguez"
@@ -31,6 +33,13 @@ then
   brew install tree
   brew install vim
   brew install yarn
+
+  brew install nvm
+  nvm install node
+  nvm use node
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion mkdir ~/.nvm
 fi
 
 # brew - apps 
@@ -43,8 +52,21 @@ then
   brew install --cask spotify
   brew install --cask notion
   brew install --cask ledger-live
-  brew install --cask monero-wallet 
   brew install --cask google-cloud-sdk
+fi
+
+# vim
+read -n "yn?install vundle(y/n)? "
+if [[ "$yn" == [Yy] ]] ;
+then
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+# zim
+read -n "yn?install zim(y/n)? "
+if [[ "$yn" == [Yy] ]] ;
+then
+  curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 fi
 
 # dotfiles
@@ -57,15 +79,6 @@ then
   alias dot="/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME"
   $dot checkout
   $dot config --local status.showUntrackedFiles no
-
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-
-# zim
-read -n "yn?install zim(y/n)? "
-if [[ "$yn" == [Yy] ]] ;
-then
-  curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 fi
 
 # stronghold 
@@ -74,22 +87,4 @@ if [[ "$yn" == [Yy] ]] ;
 then
   pip3 install stronghold
   stronghold
-fi
-
-# node
-read -n "yn?install nvm/node(y/n)? "
-if [[ "$yn" == [Yy] ]] ;
-then
-  curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | zsh 
-  source ~/.zshrc
-
-  nvm install node
-  nvm use node
-
-  read -n "yn?install global packages(y/n)? "
-  if [[ "$yn" == [Yy] ]] ;
-  then
-    yarn global add typescript pm2 vim-language-server
-    pm2 completion install
-  fi
 fi
