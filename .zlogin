@@ -11,7 +11,3 @@
 
 # Initialize Zim
 source ${ZIM_HOME}/login_init.zsh -q &!
-
-# Add google-cloud-sdk to path 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"

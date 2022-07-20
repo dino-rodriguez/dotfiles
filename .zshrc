@@ -217,8 +217,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 ### PATH
 export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/Users/dinorodriguez/.local/share/solana/install/active_release/bin:$PATH"
-
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init - --path)"
 
@@ -230,3 +228,5 @@ export NVM_DIR="$HOME/.nvm"
 # -> End zsh configuration
 #
 
+
+export PATH="$PATH:/Users/dino/.foundry/bin"

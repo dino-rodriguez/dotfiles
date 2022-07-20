@@ -32,8 +32,9 @@ then
   brew install tmux 
   brew install tree
   brew install vim
-  brew install yarn
   brew install pyenv
+  brew install poetry
+  brew install yarn
 
   brew install nvm
   nvm install node
