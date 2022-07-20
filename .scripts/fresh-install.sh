@@ -33,6 +33,7 @@ then
   brew install tree
   brew install vim
   brew install yarn
+  brew install pyenv
 
   brew install nvm
   nvm install node
