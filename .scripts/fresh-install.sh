@@ -80,11 +80,3 @@ then
   $dot checkout
   $dot config --local status.showUntrackedFiles no
 fi
-
-# stronghold 
-read -n "yn?run stronghold security script(y/n)? "
-if [[ "$yn" == [Yy] ]] ;
-then
-  pip3 install stronghold
-  stronghold
-fi
