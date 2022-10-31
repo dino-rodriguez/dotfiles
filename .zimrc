@@ -28,6 +28,8 @@ zmodule git-info
 # A customizable prompt theme.
 zmodule minimal 
 
+zmodule prompt-pwd
+
 
 ### Completion
 

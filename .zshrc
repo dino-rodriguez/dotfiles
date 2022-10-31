@@ -4,6 +4,7 @@
 
 # dotfiles (git alias)
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # git
 alias gs='git status'
@@ -127,6 +128,15 @@ alias v='vim'
 # -> Start zsh configuration
 #
 
+### Setup
+
+ZIM_HOME=~/.zim
+
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
 
 ### History
 
@@ -220,13 +230,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init - --path)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completionval "$(pyenv virtualenv-init -)"
+export PATH="$PATH:/Users/dino/.foundry/bin"
 
 #
 # -> End zsh configuration
 #
-
-
-export PATH="$PATH:/Users/dino/.foundry/bin"

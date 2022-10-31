@@ -27,21 +27,11 @@ then
   git config --global pull.rebase true
 
   brew install cask
-  brew install hub
   brew install rg
   brew install tmux 
-  brew install tree
   brew install vim
   brew install pyenv
   brew install poetry
-  brew install yarn
-
-  brew install nvm
-  nvm install node
-  nvm use node
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion mkdir ~/.nvm
 fi
 
 # brew - apps 
