@@ -2,6 +2,7 @@
 .config
 .cups
 .dot
+.cfg
 .docker
 .npm
 .nvm
@@ -12,6 +13,8 @@
 .vim
 .zcompcache
 .zim
+.vscode
+.zsh_sessions
 
 # generated files
 .bash_history
