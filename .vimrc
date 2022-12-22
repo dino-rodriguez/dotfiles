@@ -23,9 +23,17 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 "papercolor theme
 Plugin 'NLKNguyen/papercolor-theme'
+"prettier formatter
+Plugin 'prettier/vim-prettier'
 
 call vundle#end()
 filetype indent plugin on
+
+"aesthetic
+syntax enable
+colorscheme PaperColor 
+set background=dark
+set t_Co=256
 
 "line length and numbering
 set textwidth=80
@@ -46,9 +54,6 @@ set clipboard=unnamed
 "scroll when there are 10 rows before bottom or top of screen
 set scrolloff=10
 
-"highlight all matching phrases on search
-set hlsearch
-
 "wrap markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
@@ -60,12 +65,6 @@ set autoindent
 
 "2-space YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-"aesthetic
-syntax enable
-colorscheme PaperColor 
-set background=dark
-set t_Co=256
 
 "turn on line numbers
 set number
@@ -87,3 +86,7 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+
+"prettier format on save
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
