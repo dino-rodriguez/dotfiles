@@ -59,6 +59,7 @@ alias tx='tmux -2'
 alias tn='tmux new -s'
 alias ta='tmux a -t'
 alias tk='tmux kill-server'
+alias tks='tmux kill-session -t'
 alias tl='tmux ls'
 
 # tmux 2 pane

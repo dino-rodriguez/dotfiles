@@ -21,6 +21,8 @@ Plugin 'mattn/vim-lsp-settings'
 "language server auto complete
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+"papercolor theme
+Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()
 filetype indent plugin on
@@ -61,7 +63,9 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "aesthetic
 syntax enable
-colorscheme default
+colorscheme PaperColor 
+set background=dark
+set t_Co=256
 
 "turn on line numbers
 set number
