@@ -54,10 +54,6 @@ rndr-md() {
   rm $1.html; 
 }
 
-# scripts for hydra
-alias sc-init='~/dev/strata/scripts/init/init.sh'
-alias sc-monitor='~/dev/strata/scripts/monitor.sh'
-
 # tmux
 alias tx='tmux -2'
 alias tn='tmux new -s'
@@ -226,11 +222,15 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 ### PATH
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init - --path)"
 
 export PATH="$PATH:/Users/dino/.foundry/bin"
+export PATH="$PATH:/Users/dinorodriguez/.foundry/bin"
 
 #
 # -> End zsh configuration

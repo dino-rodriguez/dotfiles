@@ -14,10 +14,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
 "autocompletion
 Plugin 'lifepillar/vim-mucomplete'
-"syntax checking
-Plugin 'scrooloose/syntastic'
-"typescript syntax checking
-"Plugin 'Quramy/tsuquyomi'
+"language server protocol
+Plugin 'prabirshrestha/vim-lsp'
+"language server auto configurations
+Plugin 'mattn/vim-lsp-settings'
+"language server auto complete
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -80,16 +83,3 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
-
-"syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1 
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8', 'mypy']
