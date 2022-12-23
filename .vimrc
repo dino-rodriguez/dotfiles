@@ -36,7 +36,7 @@ filetype indent plugin on
 "aesthetic
 syntax enable
 colorscheme PaperColor 
-set background=dark
+set background=light
 set t_Co=256
 
 "numbering
@@ -96,9 +96,5 @@ autocmd BufWritePre *.ts LspDocumentFormatSync
 autocmd BufWritePre *.js LspDocumentFormatSync
 autocmd BufWritePre *.py LspDocumentFormatSync
 
-"logging for lsp
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
-
-"asyncomplete.vim log
-let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+"hover keybinding
+nnoremap <C-n> :LspHover<CR>
