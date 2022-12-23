@@ -32,6 +32,8 @@ then
   brew install vim
   brew install pyenv
   brew install poetry
+
+  pip install pyls-flake8
 fi
 
 # brew - apps 

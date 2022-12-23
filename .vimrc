@@ -25,6 +25,8 @@ Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 "prettier formatter
 Plugin 'prettier/vim-prettier'
+"python autocompletion
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -32,11 +34,10 @@ filetype indent plugin on
 "aesthetic
 syntax enable
 colorscheme PaperColor 
-set background=dark
+set background=light
 set t_Co=256
 
-"line length and numbering
-set textwidth=80
+"numbering
 set fo-=l
 
 "completion settings
@@ -90,3 +91,6 @@ command! TrimWhitespace call TrimWhitespace()
 "prettier format on save
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+
+"lsp format on save
+autocmd BufWritePre <buffer> LspDocumentFormatSync
