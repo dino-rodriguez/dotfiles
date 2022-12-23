@@ -27,6 +27,8 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'prettier/vim-prettier'
 "python autocompletion
 Plugin 'davidhalter/jedi-vim'
+"lsp health checking
+Plugin 'rhysd/vim-healthcheck'
 
 call vundle#end()
 filetype indent plugin on
@@ -34,7 +36,7 @@ filetype indent plugin on
 "aesthetic
 syntax enable
 colorscheme PaperColor 
-set background=light
+set background=dark
 set t_Co=256
 
 "numbering
@@ -54,9 +56,6 @@ set clipboard=unnamed
 
 "scroll when there are 10 rows before bottom or top of screen
 set scrolloff=10
-
-"wrap markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
 
 "2-space tabs and indents
 set expandtab
@@ -93,4 +92,13 @@ let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
 "lsp format on save
-autocmd BufWritePre <buffer> LspDocumentFormatSync
+autocmd BufWritePre *.ts LspDocumentFormatSync
+autocmd BufWritePre *.js LspDocumentFormatSync
+autocmd BufWritePre *.py LspDocumentFormatSync
+
+"logging for lsp
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
+"asyncomplete.vim log
+let g:asyncomplete_log_file = expand('~/asyncomplete.log')

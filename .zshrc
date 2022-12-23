@@ -210,6 +210,7 @@ source ${ZIM_HOME}/init.zsh
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
 # Bind up and down keys
 zmodload -F zsh/terminfo +p:terminfo
 if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
