@@ -98,3 +98,6 @@ autocmd BufWritePre *.py LspDocumentFormatSync
 
 "hover keybinding
 nnoremap <C-n> :LspHover<CR>
+
+"use fzf in vim
+set rtp+=/opt/homebrew/opt/fzf

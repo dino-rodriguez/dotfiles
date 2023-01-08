@@ -28,10 +28,14 @@ then
 
   brew install cask
   brew install rg
+  brew install fd
   brew install tmux 
   brew install vim
   brew install pyenv
   brew install poetry
+
+  brew install fzf
+  /opt/homebrew/opt/fzf/install
 
   pip install pyls-flake8
 fi

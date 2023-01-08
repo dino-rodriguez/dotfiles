@@ -21,8 +21,3 @@ brew update
 brew upgrade
 brew cleanup
 brew doctor
-
-# node 
-echo "${green}updating node and npm along with packages..${reset}"
-nvm install-latest-npm
-nvm use default

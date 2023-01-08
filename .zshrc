@@ -198,7 +198,6 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 
 ### Initialize modules
-
 if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   # Update static initialization script if it's outdated, before sourcing it
   source ${ZIM_HOME}/zimfw.zsh init -q
@@ -226,17 +225,80 @@ bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-### PATH
+#
+# -> End zsh configuration
+#
+
+#
+# PATH
+#
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="~/.pyenv/bin:$PATH"
 eval "$(pyenv init - --path)"
-
 export PATH="$PATH:/Users/dino/.foundry/bin"
 export PATH="$PATH:/Users/dinorodriguez/.foundry/bin"
 
 #
-# -> End zsh configuration
+# FZF
 #
+
+# Bind Alt-C for fzf
+bindkey "ç" fzf-cd-widget
+
+# Layout from bottom
+# Show preview window by pressing ?
+# Customize colors & prompt
+# Shortcuts when in fzf 
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--info=inline
+--height=80%
+--multi
+--preview-window=:hidden
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:008'
+--prompt='∼ ' --pointer='▶' --marker='✓'
+--bind '?:toggle-preview'
+--bind 'ctrl-a:select-all'
+--bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
+--bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
+--bind 'ctrl-v:execute(code {+})'
+"
+
+# Use fd instead of find for fzf 
+export FZF_DEFAULT_COMMAND="fd"
+
+# CTRL-T's command
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# ALT-C's command
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
+# Use :: as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='::'
+
+# Show hidden files, follow links, exclude git and node_modules
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
+
+# Override to use fd for fuzzy completion
+_fzf_compgen_path() {
+    fd . "$1"
+}
+_fzf_compgen_dir() {
+    fd --type d . "$1"
+}
+
+# Source fzf 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Find-in-file - usage: fif <SEARCH_TERM>
+fif() {
+  if [ ! "$#" -gt 0 ]; then
+    echo "Need a string to search for!";
+    return 1;
+  fi
+  rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
+}
