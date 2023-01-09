@@ -245,9 +245,6 @@ export PATH="$PATH:/Users/dinorodriguez/.foundry/bin"
 # FZF
 #
 
-# Bind Alt-C for fzf
-bindkey "ç" fzf-cd-widget
-
 # Layout from bottom
 # Show preview window by pressing ?
 # Customize colors & prompt
@@ -267,9 +264,6 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 --bind 'ctrl-v:execute(code {+})'
 "
-
-# Use fd instead of find for fzf 
-export FZF_DEFAULT_COMMAND="fd"
 
 # CTRL-T's command
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -294,11 +288,20 @@ _fzf_compgen_dir() {
 # Source fzf 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Find-in-file - usage: fif <SEARCH_TERM>
+# Find in file
 fif() {
-  if [ ! "$#" -gt 0 ]; then
-    echo "Need a string to search for!";
-    return 1;
-  fi
-  rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
+  bash ~/.scripts/fif.sh
 }
+
+# Create widget for find in file 
+zle -N fif-widget fif
+
+# Bind keys for widgets
+# Alt-C
+bindkey "ç" fzf-cd-widget
+# Alt-Z
+bindkey "Ω" fzf-file-widget
+# Alt-X
+bindkey "≈" fzf-history-widget
+# Alt-S
+bindkey "ß" fif-widget 
