@@ -265,6 +265,9 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-v:execute(code {+})'
 "
 
+# Show hidden files, follow links, exclude git and node_modules
+export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
+
 # CTRL-T's command
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -273,9 +276,6 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # Use :: as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='::'
-
-# Show hidden files, follow links, exclude git and node_modules
-export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules'"
 
 # Override to use fd for fuzzy completion
 _fzf_compgen_path() {
