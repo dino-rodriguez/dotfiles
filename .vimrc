@@ -29,6 +29,8 @@ Plugin 'prettier/vim-prettier'
 Plugin 'davidhalter/jedi-vim'
 "lsp health checking
 Plugin 'rhysd/vim-healthcheck'
+"github copilot
+Plugin 'github/copilot.vim'
 
 call vundle#end()
 filetype indent plugin on
@@ -99,8 +101,17 @@ autocmd BufWritePre *.py LspDocumentFormatSync
 "hover keybinding
 nnoremap <C-n> :LspHover<CR>
 
+"copilot keybindings
+"ALT-]
+inoremap ‘ <Plug>(copilot-next)
+"ALT-[
+inoremap “ <Plug>(copilot-previous)
+"ALT-\
+inoremap « <Plug>(copilot-suggest)
+
 "use fzf in vim
 set rtp+=/opt/homebrew/opt/fzf
+
 
 "use our colorscheme for fzf
 let g:fzf_colors =
