@@ -31,6 +31,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'rhysd/vim-healthcheck'
 "github copilot
 Plugin 'github/copilot.vim'
+"prisma support
+Plugin 'pantharshit00/vim-prisma'
 
 call vundle#end()
 filetype indent plugin on
@@ -90,12 +92,12 @@ endfun
 command! TrimWhitespace call TrimWhitespace()
 
 "prettier format on save
-let g:prettier#autoformat = 1
+let g:prettier#autoformat = 1 
 let g:prettier#autoformat_require_pragma = 0
 
 "lsp format on save
-autocmd BufWritePre *.ts LspDocumentFormatSync
-autocmd BufWritePre *.js LspDocumentFormatSync
+"autocmd BufWritePre *.ts LspDocumentFormatSync
+"autocmd BufWritePre *.js LspDocumentFormatSync 
 autocmd BufWritePre *.py LspDocumentFormatSync
 
 "hover keybinding
