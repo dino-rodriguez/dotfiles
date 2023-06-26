@@ -17,8 +17,11 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
-  use { 'ms-jpq/coq_nvim', branch = 'coq' }
-  -- use { 'ms-jpq/coq.artifacts', branch= 'artifacts' }
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
