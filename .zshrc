@@ -121,8 +121,7 @@ alias timestamp='date -u "+%Y-%m-%dT%H:%M:%S"'
 alias private_key='openssl rand -hex 32'
 
 # vim
-alias vinstall='vim +PluginInstall +qall'
-alias v='vim'
+alias v='nvim'
 
 
 #
