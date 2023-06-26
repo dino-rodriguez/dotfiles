@@ -1,5 +1,7 @@
 # hidden directories
 .config
+!.config/nvim/init.vim
+!.config/nvim/plugin
 .cups
 .dot
 .cfg

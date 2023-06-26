@@ -9,7 +9,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # git
 alias gs='git status'
 alias gsh='git stash'
-alias gc='git commit'
+alias gc='git commit -m'
 alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias gpsh='git push'
@@ -48,7 +48,7 @@ ks() {
 alias la='ls -la'
 
 # python
-alias activate='source $(poetry env info | sed -n 5p | cut -d ":" -f 2 | xargs)/bin/activate; export MYPYPATH=${MYPYPATH}:src; export PYTHONPATH=${PYTHONPATH}:.'
+alias activate='source $(poetry env info | sed -n 5p | cut -d ":" -f 2 | xargs)/bin/activate; export MYPYPATH=${MYPYPATH}:src; export PYTHONPATH=${PYTHONPATH}:src'
 
 # render markdown to browser
 rndr-md() { 
@@ -118,6 +118,7 @@ ts-init() {
 # util 
 alias sz='source ~/.zshrc'
 alias timestamp='date -u "+%Y-%m-%dT%H:%M:%S"'
+alias private_key='openssl rand -hex 32'
 
 # vim
 alias vinstall='vim +PluginInstall +qall'
@@ -305,3 +306,8 @@ bindkey "Ω" fzf-file-widget
 bindkey "≈" fzf-history-widget
 # Alt-S
 bindkey "ß" fif-widget 
+
+# PYENV SHELL
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

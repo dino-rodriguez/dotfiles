@@ -12,23 +12,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "syntax highlighting and indentation support
 Plugin 'sheerun/vim-polyglot'
-"autocompletion
-Plugin 'lifepillar/vim-mucomplete'
-"language server protocol
-Plugin 'prabirshrestha/vim-lsp'
-"language server auto configurations
-Plugin 'mattn/vim-lsp-settings'
-"language server auto complete
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 "papercolor theme
 Plugin 'NLKNguyen/papercolor-theme'
 "prettier formatter
 Plugin 'prettier/vim-prettier'
-"python autocompletion
-Plugin 'davidhalter/jedi-vim'
-"lsp health checking
-Plugin 'rhysd/vim-healthcheck'
 "github copilot
 Plugin 'github/copilot.vim'
 "prisma support
@@ -98,10 +85,10 @@ let g:prettier#autoformat_require_pragma = 0
 "lsp format on save
 "autocmd BufWritePre *.ts LspDocumentFormatSync
 "autocmd BufWritePre *.js LspDocumentFormatSync 
-autocmd BufWritePre *.py LspDocumentFormatSync
+"autocmd BufWritePre *.py LspDocumentFormatSync
 
 "hover keybinding
-nnoremap <C-n> :LspHover<CR>
+"nnoremap <C-n> :LspHover<CR>
 
 "copilot keybindings
 "ALT-]
