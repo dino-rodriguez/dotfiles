@@ -38,9 +38,6 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c   "shut off completion messages
 set belloff+=ctrlg "if Vim beeps during completion
 
-"enable automatic completion at startup
-let g:mucomplete#enable_auto_at_startup = 1
-
 "yanks to system clipboard
 "paste with `cmd-v`
 set clipboard=unnamed
@@ -83,12 +80,7 @@ let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
 "lsp format on save
-"autocmd BufWritePre *.ts LspDocumentFormatSync
-"autocmd BufWritePre *.js LspDocumentFormatSync 
-"autocmd BufWritePre *.py LspDocumentFormatSync
-
-"hover keybinding
-"nnoremap <C-n> :LspHover<CR>
+autocmd BufWritePre * lua vim.lsp.buf.format()
 
 "copilot keybindings
 "ALT-]

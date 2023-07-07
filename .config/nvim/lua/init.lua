@@ -1,5 +1,5 @@
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
   snippet = {
@@ -63,10 +63,13 @@ cmp.setup.cmdline(':', {
 -- Setup language servers.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
+lspconfig.dockerls.setup {
+  capabilities = capabilities
+}
 lspconfig.pyright.setup {
   capabilities = capabilities
 }
-lspconfig.tsserver.setup {
+lspconfig.pylsp.setup {
   capabilities = capabilities
 }
 lspconfig.rust_analyzer.setup {
@@ -76,7 +79,59 @@ lspconfig.rust_analyzer.setup {
     ['rust-analyzer'] = {},
   },
 }
+lspconfig.solc.setup {
+  capabilities = capabilities
+}
+lspconfig.sqlls.setup {
+  capabilities = capabilities
+}
+lspconfig.tailwindcss.setup {
+  capabilities = capabilities
+}
+lspconfig.tsserver.setup {
+  capabilities = capabilities
+}
+lspconfig.yamlls.setup {
+  capabilities = capabilities
+}
+lspconfig.lua_ls.setup {
+  settings = {
+    Lua = {
+      format = {
+        enable = true,
+        defaultConfig = {
+          indent_style = "space",
+          indent_size = "2",
+        }
+      },
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
 
+-- Disable inline diagnostics
+vim.diagnostic.config({
+  virtual_text = false
+})
+
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
