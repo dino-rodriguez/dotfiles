@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
   -- Syntax highlighting
   use 'sheerun/vim-polyglot'
   use 'pantharshit00/vim-prisma'
+  -- Formatting
+  use 'sbdchd/neoformat'
   -- Themes
   use 'NLKNguyen/papercolor-theme'
   -- Copilot

@@ -30,15 +30,6 @@ set clipboard=unnamed
 "Scroll when there are 10 rows before bottom or top of screen
 set scrolloff=10
 
-"2-space tabs and indents
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set autoindent
-
-"2-space YAML
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 "Turn on line numbers
 set number
 
@@ -66,10 +57,42 @@ let g:fzf_colors =
   \ 'spinner':    ['fg', 'Label'],
   \ 'header':     ['fg', 'Comment'] }
 
+
+"
+"Formatting
+"
+
+"2-space tabs and indents
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+
+"2-space YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"Neoformat should use project local version of prettier
+let g:neoformat_try_node_exe = 1
+
+"Run all enabled formatters, instead of just the first
+let g:neoformat_run_all_formatters = 1
+
+"Enabled formatters
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_python = ['black', 'isort']
+let g:neoformat_enabled_typescript = ['prettier']
+let g:neoformat_enabled_yaml = ['prettier']
+let g:neoformat_enabled_typescriptreact = ['prettier']
+let g:neoformat_enabled_javascriptreact = ['prettier']
+
+"LSP format on save
+autocmd BufWritePre * Neoformat
+
+
 "
 "Functions
 "
-"
+
 "Automically compile plugins on update to plugins.lua
 augroup packer_user_config
   autocmd!
@@ -84,9 +107,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
-
-"LSP format on save
-autocmd BufWritePre * lua vim.lsp.buf.format()
 
 "
 "Keybindings
