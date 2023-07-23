@@ -37,7 +37,15 @@ then
   brew install fzf
   /opt/homebrew/opt/fzf/install
 
-  pip install pyls-flake8
+  curl https://get.volta.sh | bash
+  volta install node 
+  npm install -g pyright
+  
+  pip install python-lsp-server
+  pip install ruff
+  pip install ruff-lsp
+  pip install black
+  pip install python-lsp-black
 fi
 
 # brew - apps 
@@ -51,13 +59,6 @@ then
   brew install --cask notion
   brew install --cask ledger-live
   brew install --cask google-cloud-sdk
-fi
-
-# vim
-read -n "yn?install vundle(y/n)? "
-if [[ "$yn" == [Yy] ]] ;
-then
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
 # zim

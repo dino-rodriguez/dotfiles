@@ -79,7 +79,7 @@ let g:neoformat_run_all_formatters = 1
 
 "Enabled formatters
 let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_python = ['black', 'isort']
+let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_typescriptreact = ['prettier']

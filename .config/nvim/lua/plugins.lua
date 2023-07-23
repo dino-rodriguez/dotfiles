@@ -18,6 +18,8 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   -- Language server
   use 'neovim/nvim-lspconfig'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use "nvim-lua/plenary.nvim"
   -- Completion with LSP
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
