@@ -48,7 +48,7 @@ ks() {
 alias la='ls -la'
 
 # python
-alias activate='source $(poetry env info | sed -n 5p | cut -d ":" -f 2 | xargs)/bin/activate; export MYPYPATH=${MYPYPATH}:src; export PYTHONPATH=${PYTHONPATH}:src'
+alias activate='source $(poetry env info | sed -n 5p | cut -d ":" -f 2 | xargs)/bin/activate'
 
 # render markdown to browser
 rndr-md() { 
