@@ -69,12 +69,23 @@ local null_ls_h = require("null-ls.helpers")
 -- Custom ruff formatter to do import sorting.
 local FORMATTING = null_ls_methods.internal.FORMATTING
 local ruff_formatter = null_ls_h.make_builtin({
-	name = "ruff",
+	name = "ruff-formatter",
 	method = FORMATTING,
 	filetypes = { "python" },
 	generator_opts = {
 		command = "ruff",
-		args = { "--fix", "--select", "I", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
+		args = { "format", "--stdin-filename", "$FILENAME", "-" },
+		to_stdin = true,
+	},
+	factory = null_ls_h.formatter_factory,
+})
+local ruff_fixer = null_ls_h.make_builtin({
+	name = "ruff-fixer",
+	method = FORMATTING,
+	filetypes = { "python" },
+	generator_opts = {
+		command = "ruff",
+		args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
 		to_stdin = true,
 	},
 	factory = null_ls_h.formatter_factory,
@@ -84,6 +95,7 @@ null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
 		ruff_formatter,
+		ruff_fixer,
 		null_ls.builtins.diagnostics.ruff,
 	},
 	on_attach = function(client, bufnr)
@@ -185,10 +197,6 @@ lspconfig.lua_ls.setup({
 vim.diagnostic.config({
 	virtual_text = false,
 })
-
--- Show line diagnostics automatically in hover window
-vim.o.updatetime = 250
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

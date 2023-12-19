@@ -11,7 +11,7 @@ filetype indent plugin on
 
 "Theme
 syntax enable
-colorscheme PaperColor 
+colorscheme apprentice 
 set background=dark
 set t_Co=256
 
@@ -79,14 +79,20 @@ let g:neoformat_run_all_formatters = 1
 
 "Enabled formatters
 let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_python = ['black', 'isort']
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_enabled_yaml = ['prettier']
 let g:neoformat_enabled_typescriptreact = ['prettier']
 let g:neoformat_enabled_javascriptreact = ['prettier']
 
 "LSP format on save
-autocmd BufWritePre * Neoformat
+augroup FormatOnSave
+  autocmd!
+  autocmd FileType javascript Neoformat
+  autocmd FileType typescript Neoformat
+  autocmd FileType yaml Neoformat
+  autocmd FileType typescriptreact Neoformat
+  autocmd FileType javascriptreact Neoformat
+augroup END
 
 
 "
