@@ -122,6 +122,7 @@ alias private_key='openssl rand -hex 32'
 
 # vim
 alias v='nvim'
+alias vi='nvim'
 
 
 #

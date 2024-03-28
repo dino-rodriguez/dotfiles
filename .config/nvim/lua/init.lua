@@ -134,7 +134,17 @@ lspconfig.ruff_lsp.setup({
 	capabilities = capabilities,
 })
 lspconfig.rust_analyzer.setup({
-	on_attach = on_attach,
+	on_attach = function(client, bufnr)
+		-- Enable auto formatting on save
+		client.server_capabilities.semanticTokensProvider = nil
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("Format", { clear = true }),
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format({ async = true })
+			end,
+		})
+	end,
 	capabilities = capabilities,
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
