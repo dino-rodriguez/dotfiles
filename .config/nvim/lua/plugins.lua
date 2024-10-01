@@ -33,6 +33,7 @@ return require("packer").startup(function(use)
   use("pantharshit00/vim-prisma")
   -- Formatting
   use("sbdchd/neoformat")
+  use("stevearc/conform.nvim")
   -- Themes
   use("NLKNguyen/papercolor-theme")
   use("rafi/awesome-vim-colorschemes")

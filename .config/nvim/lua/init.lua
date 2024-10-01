@@ -60,6 +60,21 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
+-- Setup conform.nvim.
+require("conform").setup({
+	formatters_by_ft = {
+		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+	},
+})
+
+-- Format on save.
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
 -- Setup null ls.
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require("null-ls")
@@ -68,25 +83,14 @@ local null_ls_h = require("null-ls.helpers")
 
 -- Custom ruff formatter to do import sorting.
 local FORMATTING = null_ls_methods.internal.FORMATTING
-local ruff_formatter = null_ls_h.make_builtin({
-	name = "ruff-formatter",
+local solidity_formatter = null_ls_h.make_builtin({
+	name = "solc-formatter",
 	method = FORMATTING,
-	filetypes = { "python" },
+	filetypes = { "solidity" },
 	generator_opts = {
-		command = "ruff",
-		args = { "format", "--stdin-filename", "$FILENAME", "-" },
-		to_stdin = true,
-	},
-	factory = null_ls_h.formatter_factory,
-})
-local ruff_fixer = null_ls_h.make_builtin({
-	name = "ruff-fixer",
-	method = FORMATTING,
-	filetypes = { "python" },
-	generator_opts = {
-		command = "ruff",
-		args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
-		to_stdin = true,
+		command = "forge",
+		args = { "fmt", "$FILENAME" },
+		to_temp_file = true,
 	},
 	factory = null_ls_h.formatter_factory,
 })
@@ -94,8 +98,25 @@ local ruff_fixer = null_ls_h.make_builtin({
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.prettier.with({
+			filetypes = {
+				"javascript",
+				"typescript",
+				"css",
+				"scss",
+				"html",
+				"json",
+				"yaml",
+				"markdown",
+				"graphql",
+				"md",
+				"txt",
+			},
+			only_local = "node_modules/.bin",
+		}),
 		ruff_formatter,
 		ruff_fixer,
+		solidity_formatter,
 		null_ls.builtins.diagnostics.ruff,
 	},
 	on_attach = function(client, bufnr)
@@ -121,15 +142,31 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
+lspconfig.solidity_ls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
 lspconfig.dockerls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 lspconfig.pyright.setup({
+	settings = {
+		pyright = {
+			-- Using Ruff's import organizer
+			disableOrganizeImports = true,
+		},
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
-lspconfig.ruff_lsp.setup({
+lspconfig.ruff.setup({
+	trace = "messages",
+	init_options = {
+		settings = {
+			logLevel = "debug",
+		},
+	},
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -151,19 +188,11 @@ lspconfig.rust_analyzer.setup({
 		["rust-analyzer"] = {},
 	},
 })
-lspconfig.solc.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
 lspconfig.sqlls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 lspconfig.tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-lspconfig.tsserver.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -214,6 +243,22 @@ vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+
+-- Disable hover for ruff and defer to pyright
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client == nil then
+			return
+		end
+		if client.name == "ruff" then
+			-- Disable hover in favor of Pyright
+			client.server_capabilities.hoverProvider = false
+		end
+	end,
+	desc = "LSP: Disable hover capability from Ruff",
+})
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer

@@ -311,3 +311,7 @@ bindkey "ß" fif-widget
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# NPM globals
+export PATH="/Users/dino/.nvm/versions/node/v18.6.0/bin:$PATH"
+
