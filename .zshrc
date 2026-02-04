@@ -1,7 +1,3 @@
-#
-# Aliases 
-#
-
 aws_profile() {
   if [ -z "$1" ]; then
     # No arguments - show current profile
@@ -23,6 +19,10 @@ aws_profile() {
   fi
 }
 
+#
+# Aliases
+#
+
 alias ls='eza --git --group-directories-first --icons'
 alias ll='eza -l --header --git --group-directories-first --icons'
 alias la='eza -la --header --git --group-directories-first --icons'
@@ -31,9 +31,8 @@ alias cat='bat'
 
 #
 # Completions
-# 
+#
 
-# Docker
 fpath=(~/.zfunc /Users/dino/.docker/completions /opt/homebrew/share/zsh/site-functions $fpath)
 
 autoload -Uz compinit
