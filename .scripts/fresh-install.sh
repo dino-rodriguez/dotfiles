@@ -179,3 +179,52 @@ else
     echo "Installing Neovim..."
     brew install neovim
 fi
+
+# ------------------------------------------------------------------------------
+# Fonts (Casks)
+# ------------------------------------------------------------------------------
+
+# Lilex - Modern programming font with ligatures
+# https://github.com/mishamyrt/Lilex
+if brew list --cask font-lilex &> /dev/null; then
+    echo "Lilex font already installed, skipping..."
+else
+    echo "Installing Lilex font..."
+    brew install --cask font-lilex
+fi
+
+# JetBrains Mono - Typeface for developers
+# https://github.com/JetBrains/JetBrainsMono
+if brew list --cask font-jetbrains-mono &> /dev/null; then
+    echo "JetBrains Mono font already installed, skipping..."
+else
+    echo "Installing JetBrains Mono font..."
+    brew install --cask font-jetbrains-mono
+fi
+
+# IBM Plex Sans - IBM's open-source typeface
+# https://github.com/IBM/plex
+if brew list --cask font-ibm-plex-sans &> /dev/null; then
+    echo "IBM Plex Sans font already installed, skipping..."
+else
+    echo "Installing IBM Plex Sans font..."
+    brew install --cask font-ibm-plex-sans
+fi
+
+# Atkinson Hyperlegible Next - High legibility typeface
+# https://github.com/googlefonts/atkinson-hyperlegible-next
+if brew list --cask font-atkinson-hyperlegible-next &> /dev/null; then
+    echo "Atkinson Hyperlegible Next font already installed, skipping..."
+else
+    echo "Installing Atkinson Hyperlegible Next font..."
+    brew install --cask font-atkinson-hyperlegible-next
+fi
+
+# Atkinson Hyperlegible Mono - Monospace variant for coding
+# https://github.com/googlefonts/atkinson-hyperlegible-next
+if brew list --cask font-atkinson-hyperlegible-mono &> /dev/null; then
+    echo "Atkinson Hyperlegible Mono font already installed, skipping..."
+else
+    echo "Installing Atkinson Hyperlegible Mono font..."
+    brew install --cask font-atkinson-hyperlegible-mono
+fi
