@@ -23,6 +23,3 @@
 
 !.scripts/
 !.scripts/**
-
-!.claude/
-!.claude/settings.json
