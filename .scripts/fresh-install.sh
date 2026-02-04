@@ -161,3 +161,21 @@ else
     echo "Installing git-delta..."
     brew install git-delta
 fi
+
+# wget - Command-line utility for downloading files
+# https://www.gnu.org/software/wget/
+if brew list wget &> /dev/null; then
+    echo "wget already installed, skipping..."
+else
+    echo "Installing wget..."
+    brew install wget
+fi
+
+# Neovim - Modern, extensible Vim-based text editor
+# https://github.com/neovim/neovim
+if brew list neovim &> /dev/null; then
+    echo "Neovim already installed, skipping..."
+else
+    echo "Installing Neovim..."
+    brew install neovim
+fi
