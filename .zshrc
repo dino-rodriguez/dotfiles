@@ -1,3 +1,7 @@
+#
+# Functions
+#
+
 aws_profile() {
   if [ -z "$1" ]; then
     # No arguments - show current profile
@@ -34,7 +38,6 @@ alias cat='bat'
 #
 
 fpath=(~/.zfunc /Users/dino/.docker/completions /opt/homebrew/share/zsh/site-functions $fpath)
-
 autoload -Uz compinit
 compinit
 
@@ -42,11 +45,6 @@ compinit
 # Interactive Tools
 #
 
-# Starship
-eval "$(starship init zsh)"
-
-# Zoxide 
-eval "$(zoxide init zsh --cmd cd)"
-
-# Fzf
 source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
