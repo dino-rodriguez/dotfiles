@@ -9,11 +9,17 @@
 !.zfunc/**
 
 !.config/
-!.config/ghostty
+!.config/ghostty/
 !.config/ghostty/**
-!.config/nvim
+!.config/nvim/
 !.config/nvim/**
+!.config/delta/
+!.config/delta/**
+!.config/bat/
+!.config/bat/**
 !.config/starship.toml
+!.config/starship/
+!.config/starship/**
 
 !.scripts/
 !.scripts/**
