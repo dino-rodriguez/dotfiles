@@ -14,3 +14,6 @@
 !.config/nvim
 !.config/nvim/**
 !.config/starship.toml
+
+!.scripts/
+!.scripts/**
