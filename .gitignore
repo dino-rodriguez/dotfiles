@@ -1,0 +1,17 @@
+*
+
+!.gitignore
+!.gitconfig
+
+!.zshrc
+!.zprofile
+!.zshenv
+!.zfunc/
+!.zfunc/**
+
+!.config/
+!.config/ghostty
+!.config/ghostty/**
+!.config/nvim
+!.config/nvim/**
+!.config/starship.toml

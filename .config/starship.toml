@@ -1,0 +1,10 @@
+add_newline = false
+
+[directory]
+truncation_length = 2
+
+[git_status]
+disabled = true
+
+[package]
+disabled = true
