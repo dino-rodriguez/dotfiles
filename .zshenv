@@ -13,6 +13,9 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
+# Ollama
+export OLLAMA_NOMLX=1
+
 # Bat
 export BAT_THEME_DARK="Catppuccin Mocha"
 export BAT_THEME_LIGHT="Catppuccin Latte"

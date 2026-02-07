@@ -180,6 +180,37 @@ else
     brew install neovim
 fi
 
+# Ollama - Run large language models locally
+# https://github.com/ollama/ollama
+if brew list ollama &> /dev/null; then
+    echo "Ollama already installed, skipping..."
+else
+    echo "Installing Ollama..."
+    brew install ollama
+fi
+
+# ------------------------------------------------------------------------------
+# Python (via uv)
+# ------------------------------------------------------------------------------
+
+# Install Python 3.11 - needed for packages that depend on audioop (removed in 3.13)
+echo "Installing Python 3.11 via uv..."
+uv python install 3.11
+
+# ------------------------------------------------------------------------------
+# Python CLI Tools (via uv tool - isolated global installs)
+# ------------------------------------------------------------------------------
+
+# Open WebUI - Web interface for LLMs (Ollama, OpenAI, etc.)
+# https://github.com/open-webui/open-webui
+# Pinned to Python 3.11 because pydub depends on audioop (removed in Python 3.13)
+if uv tool list 2>/dev/null | grep -q "^open-webui"; then
+    echo "open-webui already installed, skipping..."
+else
+    echo "Installing open-webui..."
+    uv tool install open-webui --python 3.11
+fi
+
 # ------------------------------------------------------------------------------
 # Fonts (Casks)
 # ------------------------------------------------------------------------------
