@@ -1,7 +1,5 @@
 palette = "catppuccin_latte"
 
-add_newline = false
-
 [directory]
 truncation_length = 2
 

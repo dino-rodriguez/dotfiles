@@ -1,4 +1,10 @@
 #
+# Path
+#
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+#
 # Functions
 #
 
@@ -30,6 +36,8 @@ aws_profile() {
 alias ls='eza --git --group-directories-first --icons'
 alias ll='eza -l --header --git --group-directories-first --icons'
 alias la='eza -la --header --git --group-directories-first --icons'
+alias cd='z'
+alias cdi='zi'
 alias tree='eza --tree --git --group-directories-first --icons'
 alias cat='bat'
 
@@ -47,4 +55,4 @@ compinit
 
 source <(fzf --zsh)
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh)"
