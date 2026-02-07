@@ -56,3 +56,11 @@ compinit
 source <(fzf --zsh)
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+#
+# Keybindings
+#
+
+# fzf: rebind cd widget from Option+C to Ctrl+G
+bindkey -r '\ec'
+bindkey '^G' fzf-cd-widget
