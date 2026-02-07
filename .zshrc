@@ -1,4 +1,19 @@
 #
+# History
+#
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000          # lines kept in memory per session
+SAVEHIST=100000         # lines kept in the history file
+
+setopt INC_APPEND_HISTORY   # write to file immediately, not on exit
+setopt HIST_IGNORE_DUPS     # skip consecutive duplicates
+setopt HIST_IGNORE_ALL_DUPS # remove older duplicate from file
+setopt HIST_REDUCE_BLANKS   # trim extra whitespace
+setopt HIST_IGNORE_SPACE    # prefix with space to exclude from history
+setopt SHARE_HISTORY        # share history across all open tabs
+
+#
 # Path
 #
 
