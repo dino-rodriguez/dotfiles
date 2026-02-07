@@ -27,3 +27,5 @@
 !.claude/
 !.claude/settings.json
 !.claude/statusline.sh
+!.claude/skills/
+!.claude/skills/**
