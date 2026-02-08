@@ -9,7 +9,7 @@ allowed-tools: Bash(git checkout:*), Bash(git add:*), Bash(git status:*), Bash(g
 ## Context
 
 - Current git status: !`git status`
-- Current git diff (staged and unstaged changes): !`git diff HEAD`
+- Current git diff (staged and unstaged changes): !`git diff HEAD 2>/dev/null || git diff --cached`
 - Current branch: !`git branch --show-current`
 - PR template: !`cat .github/PULL_REQUEST_TEMPLATE.md 2>/dev/null || echo "No PR template found in .github/PULL_REQUEST_TEMPLATE.md"`
 

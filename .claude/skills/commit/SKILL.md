@@ -1,9 +1,9 @@
 ---
-name: commit-push
-description: Commit all changes and push to origin on the current branch using conventional commits
+name: commit
+description: Commit all changes on the current branch using conventional commits
 disable-model-invocation: true
 model: sonnet
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*), Bash(git diff:*)
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*)
 ---
 
 ## Context
@@ -29,6 +29,5 @@ Keep the description concise (under 72 characters), lowercase, no period at the 
 Based on the above context:
 
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
-2. Push the current branch to origin with `git push`
-3. Do NOT create a new branch. Stay on the current branch.
-4. You MUST do all of the above in a single message using multiple tool calls where possible. Do not use any other tools or send any other text besides these tool calls.
+2. Do NOT create a new branch. Do NOT push anything. Just stage and commit on the current branch.
+3. You MUST do all of the above in a single message using multiple tool calls where possible. Do not use any other tools or send any other text besides these tool calls.
