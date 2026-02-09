@@ -15,8 +15,7 @@ if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    echo "Homebrew already installed, updating..."
-    brew update
+    echo "Homebrew already installed, skipping..."
 fi
 
 # ------------------------------------------------------------------------------
@@ -189,13 +188,52 @@ else
     brew install ollama
 fi
 
+# Linear - CLI for Linear issue tracker
+# https://github.com/schpet/linear
+if brew list schpet/tap/linear &> /dev/null; then
+    echo "Linear CLI already installed, skipping..."
+else
+    echo "Installing Linear CLI..."
+    brew install schpet/tap/linear
+fi
+
+# Claude Code - Anthropic's CLI for Claude
+# https://github.com/anthropics/claude-code
+if command -v claude &> /dev/null; then
+    echo "Claude Code already installed, skipping..."
+else
+    echo "Installing Claude Code..."
+    curl -fsSL https://claude.ai/install.sh | bash
+    # Ensure claude is available in current session
+    export PATH="$HOME/.claude/local/bin:$PATH"
+fi
+
+# Claude Code plugins
+if claude plugin marketplace list 2>/dev/null | grep -q "linear-cli"; then
+    echo "Claude plugin marketplace linear-cli already added, skipping..."
+else
+    echo "Adding Claude plugin marketplace linear-cli..."
+    claude plugin marketplace add schpet/linear-cli
+fi
+
+if claude plugin list 2>/dev/null | grep -q "linear-cli@linear-cli"; then
+    echo "Claude plugin linear-cli already installed, skipping..."
+else
+    echo "Installing Claude plugin linear-cli..."
+    claude plugin install linear-cli@linear-cli
+fi
+
 # ------------------------------------------------------------------------------
 # Python (via uv)
 # ------------------------------------------------------------------------------
 
 # Install Python 3.11 - needed for packages that depend on audioop (removed in 3.13)
-echo "Installing Python 3.11 via uv..."
-uv python install 3.11
+if uv python list 2>/dev/null | grep "cpython-3.11" | grep -qv "<download available>"; then
+    echo "Python 3.11 already installed, skipping..."
+else
+    echo "Installing Python 3.11 via uv..."
+    uv python install 3.11
+fi
 
 # ------------------------------------------------------------------------------
 # Python CLI Tools (via uv tool - isolated global installs)

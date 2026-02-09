@@ -39,4 +39,5 @@ Based on the above context:
 2. Stage all changes with `git add` and create a single commit with a conventional commit message
 3. Push the branch to origin with `git push -u origin <branch-name>`
 4. Create a pull request using `gh pr create`. If a PR template was found above, structure the PR body to follow that template's format and sections. Otherwise, write a concise PR body with a summary of changes.
-5. You MUST do all of the above in a single message using multiple tool calls where possible. Do not use any other tools or send any other text besides these tool calls.
+5. If Linear issue IDs were provided as arguments (e.g. `SPE-3295` or `SPE-3295 SPE-3300`), prepend them to the PR title in brackets: `[SPE-3295] feat: description` or `[SPE-3295][SPE-3300] feat: description`. If no issue IDs were provided, use the PR title as-is without brackets.
+6. You MUST do all of the above in a single message using multiple tool calls where possible. Do not use any other tools or send any other text besides these tool calls.
