@@ -18,7 +18,7 @@ Use conventional commit format for commit messages.
 
 ### Commit message
 
-Format: `<type>(<optional-scope>): <description>`
+Format: `<type>: <description>`
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
 

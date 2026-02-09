@@ -25,7 +25,7 @@ Examples: `feat/add-user-auth`, `fix/login-redirect`, `chore/update-deps`, `refa
 
 ### Commit message
 
-Format: `<type>(<optional-scope>): <description>`
+Format: `<type>: <description>`
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
 
