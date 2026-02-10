@@ -3,7 +3,7 @@ name: commit-push-pr
 description: Commit all changes, push to origin, and open a pull request using conventional commits
 disable-model-invocation: true
 model: sonnet
-allowed-tools: Bash(git checkout:*), Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*), Bash(gh pr create:*), Bash(git diff:*)
+allowed-tools: Bash(git checkout *), Bash(git add *), Bash(git status *), Bash(git push *), Bash(git commit *), Bash(gh pr create *), Bash(git diff *)
 ---
 
 ## Context
