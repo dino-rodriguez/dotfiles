@@ -17,19 +17,7 @@ Always include these flags unless the user explicitly overrides them:
 
 ## Labels
 
-Infer the label from the user's description or explicit request. If the intent is unclear, skip `--label`.
-
-| Label | Use when |
-|-------|----------|
-| `Feature` | New functionality or capability |
-| `Bug` | Fixing broken behavior |
-| `Documentation` | Docs-only changes |
-| `Improvement` | Refactoring or enhancing existing functionality |
-| `Testing` | Adding or updating tests |
-| `Chore` | Maintenance, dependencies, cleanup |
-| `Performance` | Speed or resource optimization |
-| `CI/CD` | Pipeline or deployment changes |
-| `Style` | Formatting or cosmetic changes |
+Before creating an issue, run `linear label list` to fetch the current labels. Select the most relevant label(s) based on the user's description and context. Use multiple `--label` flags if more than one applies. If the intent is unclear, skip `--label`.
 
 ## Issue Description Template
 
