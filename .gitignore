@@ -20,6 +20,8 @@
 !.config/starship.toml
 !.config/starship/
 !.config/starship/**
+!.config/zed/
+!.config/zed/settings.json
 
 !.scripts/
 !.scripts/**
