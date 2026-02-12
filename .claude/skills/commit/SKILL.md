@@ -30,4 +30,4 @@ Based on the above context:
 
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
 2. Do NOT create a new branch. Do NOT push anything. Just stage and commit on the current branch.
-3. You MUST do all of the above in a single message using multiple tool calls where possible. Do not use any other tools or send any other text besides these tool calls.
+3. Do not use any other tools or send any other text besides these tool calls.
