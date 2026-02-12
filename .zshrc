@@ -74,6 +74,25 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 #
+# Appearance
+#
+
+# Re-source .zshenv when macOS appearance changes (light/dark)
+_update_appearance() {
+  local current
+  if [[ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" == "Dark" ]]; then
+    current="dark"
+  else
+    current="light"
+  fi
+  [[ "$current" == "$__appearance" ]] && return
+  __appearance="$current"
+  source ~/.zshenv
+  eval "$(starship init zsh)"
+}
+precmd_functions+=(_update_appearance)
+
+#
 # Keybindings
 #
 
