@@ -1,7 +1,7 @@
 ---
 name: linear-create-issue
 description: This skill provides default values and a template for creating Linear issues. It should be used when creating a new Linear issue, including setting status, priority, assignee, and labels.
-allowed-tools: Bash(linear *)
+allowed-tools: Bash(linear*)
 ---
 
 ## Default Flags

@@ -3,7 +3,7 @@ name: commit-push
 description: Commit all changes and push to origin on the current branch using conventional commits
 disable-model-invocation: true
 model: sonnet
-allowed-tools: Bash(git add *), Bash(git status *), Bash(git push *), Bash(git commit *), Bash(git diff *)
+allowed-tools: Bash(git add*), Bash(git status*), Bash(git push*), Bash(git commit*), Bash(git diff*)
 ---
 
 ## Context
