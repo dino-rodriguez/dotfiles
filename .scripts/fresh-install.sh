@@ -179,6 +179,15 @@ else
     brew install neovim
 fi
 
+# btop - Resource monitor (CPU, memory, network, disks, GPU)
+# https://github.com/aristocratos/btop
+if brew list btop &> /dev/null; then
+    echo "btop already installed, skipping..."
+else
+    echo "Installing btop..."
+    brew install btop
+fi
+
 # Ollama - Run large language models locally
 # https://github.com/ollama/ollama
 if brew list ollama &> /dev/null; then
