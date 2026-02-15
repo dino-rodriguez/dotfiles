@@ -2,7 +2,7 @@
 name: docker-cleanup
 description: Audit Docker resource usage and clean up unused containers, images, build cache, and volumes
 model: sonnet
-allowed-tools: Bash(docker*)
+allowed-tools: Bash(docker:*)
 ---
 
 ## Context

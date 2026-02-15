@@ -3,7 +3,7 @@ name: standup
 description: Generate a standup summary from your recent PRs, enriched with Linear issue context
 disable-model-invocation: true
 model: sonnet
-allowed-tools: Bash(gh*), Bash(date*), Bash(linear*)
+allowed-tools: Bash(gh:*), Bash(date:*), Bash(linear:*)
 ---
 
 ## Context
