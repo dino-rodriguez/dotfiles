@@ -71,7 +71,6 @@ compinit
 
 source <(fzf --zsh)
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
 
 #
 # Appearance
@@ -99,3 +98,7 @@ precmd_functions+=(_update_appearance)
 # fzf: rebind cd widget from Option+C to Ctrl+G
 bindkey -r '\ec'
 bindkey '^G' fzf-cd-widget
+
+# zoxide must be initialized last
+export _ZO_DOCTOR=0
+eval "$(zoxide init zsh)"

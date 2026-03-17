@@ -188,6 +188,15 @@ else
     brew install btop
 fi
 
+# Pandoc - Universal document converter
+# https://github.com/jgm/pandoc
+if brew list pandoc &> /dev/null; then
+    echo "Pandoc already installed, skipping..."
+else
+    echo "Installing Pandoc..."
+    brew install pandoc
+fi
+
 # Ollama - Run large language models locally
 # https://github.com/ollama/ollama
 if brew list ollama &> /dev/null; then
