@@ -7,20 +7,23 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "scrollbar": {
+    "git_diff": true
+  },
   "ui_font_family": "IBM Plex Sans",
   "buffer_font_family": "Lilex",
   "telemetry": {
     "diagnostics": true,
-    "metrics": false
+    "metrics": false,
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
   },
   "vim_mode": true,
   "git": {
     "inline_blame": {
-      "enabled": true
-    }
+      "enabled": true,
+    },
   },
   "base_keymap": "VSCode",
   "ui_font_size": 16,
@@ -29,5 +32,11 @@
     "mode": "system",
     "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
+  },
+  "log": {
+    "editor": "trace",
+    "git": "trace",
+    "github": "trace",
+    "git_ui": "trace",
   },
 }

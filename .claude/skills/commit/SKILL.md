@@ -28,4 +28,4 @@ Based on the above context:
 
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
 2. Do NOT create a new branch. Do NOT push anything. Just stage and commit on the current branch.
-3. Do not use any other tools or send any other text besides these tool calls.
+3. After committing, print the commit message. Do not use any tools besides those listed in allowed-tools.

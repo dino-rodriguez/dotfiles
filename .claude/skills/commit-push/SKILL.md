@@ -29,4 +29,4 @@ Based on the above context:
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
 2. Push the current branch to origin with `git push -u origin HEAD`
 3. Do NOT create a new branch. Stay on the current branch.
-4. Do not use any other tools or send any other text besides these tool calls.
+4. After pushing, print the commit message and the branch pushed. Do not use any tools besides those listed in allowed-tools.
