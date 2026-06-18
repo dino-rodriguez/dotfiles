@@ -1,7 +1,6 @@
 ---
 name: commit
 description: Commit all changes on the current branch using conventional commits
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*)
 ---
 
 ## Context
@@ -28,4 +27,4 @@ Based on the above context:
 
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
 2. Do NOT create a new branch. Do NOT push anything. Just stage and commit on the current branch.
-3. After committing, print the commit message. Do not use any tools besides those listed in allowed-tools.
+3. After committing, print the commit message. Do not include any "Made-with: Cursor" footer or similar metadata in the commit message.

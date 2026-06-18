@@ -2,15 +2,14 @@
 name: linear-create-issue
 description: Create a Linear issue, ticket, bug, or task. Use when asked to file, track, log, or add something to Linear. Handles status, priority, assignee, labels, project, cycle, and milestone.
 argument-hint: "[title or description]"
-allowed-tools: Bash(linear:*), Bash(curl:*)
 ---
 
 ## Context
 
-- Auth token: !`linear auth token 2>&1`
-- Available labels: !`linear label list --all --no-color 2>&1`
+- Auth status: !`linear auth whoami 2>&1`
+- Available labels: !`linear label list --all 2>&1`
 - Active cycle: !`curl -s -X POST https://api.linear.app/graphql -H "Authorization: $(linear auth token)" -H "Content-Type: application/json" -d '{"query":"{ teams { nodes { key activeCycle { id number } } } }"}'`
-- Team members: !`linear team members SPE --no-color 2>&1`
+- Team members: !`linear team members SPE 2>&1`
 
 ## Prerequisites
 
@@ -27,7 +26,7 @@ Always apply unless the user explicitly overrides:
 | `--team` | `SPE` | Always required — the CLI cannot infer it |
 | `--assignee` | `self` | When not `self`, must be the exact email from `linear team members SPE` — never guess |
 | `--no-interactive` | (always) | |
-| `--no-color` | (always) | Prevents ANSI codes from corrupting parsed output |
+| `--json` | (when parsing output) | Use where available to get structured output |
 
 ## Description Template
 
@@ -65,16 +64,29 @@ Parse the issue identifier (e.g. `SPE-1234`) from the command output — this is
 
 ### Step 3: Assign cycle and milestone via GraphQL
 
-The CLI does not support cycle or milestone assignment. Use the `issueUpdate` GraphQL mutation to patch the created issue.
+The CLI does not support cycle or milestone assignment. Use `curl` against the Linear GraphQL API to patch the created issue.
+
+**Auth token**: Read from `~/.config/linear/credentials.toml`. The file format is:
+```toml
+default = "specular"
+specular = "lin_api_..."
+```
+Use the token value for the default workspace.
 
 **Cycle**: Always assign the active cycle from Step 1. If `activeCycle` was null (no active cycle), skip.
 
 **Milestone** (only when a project was specified and milestones exist): Pick the milestone with the nearest future target date. If all target dates are in the past, pick the most recent one.
 
-Send a single `issueUpdate` mutation:
-- `id`: the issue identifier from Step 2 (e.g. `SPE-1234`)
-- `input`: include `cycleId` and optionally `projectMilestoneId`
-- Request back: `success`, `issue { identifier url cycle { number } projectMilestone { name } }`
+**Exact command** (include both `cycleId` and `projectMilestoneId` when both apply, omit `projectMilestoneId` if no milestone):
+
+```bash
+curl -s -X POST https://api.linear.app/graphql \
+  -H "Content-Type: application/json" \
+  -H "Authorization: <TOKEN_FROM_CREDENTIALS_TOML>" \
+  -d '{
+    "query": "mutation { issueUpdate(id: \"SPE-1234\", input: { cycleId: \"<CYCLE_UUID>\", projectMilestoneId: \"<MILESTONE_UUID>\" }) { success issue { identifier url cycle { number } projectMilestone { name } } } }"
+  }'
+```
 
 If the mutation returns errors, report them to the user verbatim. Common causes: expired token (re-run `linear auth login`), issue not found (verify the identifier from Step 2).
 

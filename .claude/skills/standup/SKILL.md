@@ -2,7 +2,6 @@
 name: standup
 description: Generate a standup summary from your recent PR activity, enriched with Linear issue context
 argument-hint: "[timeframe]"
-allowed-tools: Bash(gh:*), Bash(date:*), Bash(linear:*)
 ---
 
 ## Context

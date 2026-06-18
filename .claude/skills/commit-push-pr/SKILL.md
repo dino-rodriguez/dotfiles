@@ -2,7 +2,6 @@
 name: commit-push-pr
 description: Commit, push, and open a pull request. Use when the user says things like "commit and PR", "commit push PR", "open a PR for SPE-1234", "submit this as a PR", "create a pull request", or references a Linear issue ID like SPE-XXXX and wants a PR.
 argument-hint: "[issue-id] [options]"
-allowed-tools: Bash(git checkout:*), Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*), Bash(gh pr create:*), Bash(git diff:*)
 ---
 
 ## Context
@@ -40,4 +39,4 @@ Based on the above context:
 4. Create a pull request using `gh pr create`. If the user asked for a draft PR (e.g. "draft PR", "WIP PR", "open as draft"), add the `--draft` flag. Always add `--assignee @me` unless the user specifies a different assignee. If a PR template was found above, structure the PR body to follow that template's format and sections. Otherwise, write a concise PR body with a summary of changes.
 5. If Linear issue IDs were provided as arguments (e.g. `SPE-3295` or `SPE-3295 SPE-3300`), prepend them to the PR title in brackets: `[SPE-3295] feat: description` or `[SPE-3295][SPE-3300] feat: description`. If no issue IDs were provided, use the PR title as-is without brackets.
 6. If the user specified reviewers (e.g. "assign to @alice for review"), add `--reviewer <handle>`. If they specified labels, add `--label <name>`.
-7. After all steps complete, print a brief summary: the commit message, the branch name, and the PR URL. Do not use any tools besides those listed in allowed-tools.
+7. After all steps complete, print a brief summary: the commit message, the branch name, and the PR URL.

@@ -98,7 +98,7 @@
       "Bash(psql:*)",
       "Bash(redis-cli:*)"
     ],
-    "deny": [
+    "ask": [
       "Bash(rm:*)",
       "Bash(pkill:*)",
       "Bash(killall:*)",
@@ -121,14 +121,32 @@
       "Bash(npm publish:*)"
     ]
   },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '\\e[<u\\e[>0m'"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
     "linear-cli@linear-cli": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "sentry@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light",
+  "editorMode": "vim",
+  "tui": "fullscreen"
 }

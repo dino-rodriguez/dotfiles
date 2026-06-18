@@ -1,7 +1,6 @@
 ---
 name: commit-push
 description: Commit all changes and push to origin on the current branch using conventional commits
-allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git push:*), Bash(git commit:*), Bash(git diff:*)
 ---
 
 ## Context
@@ -29,4 +28,4 @@ Based on the above context:
 1. Stage all changes with `git add` and create a single commit with a conventional commit message
 2. Push the current branch to origin with `git push -u origin HEAD`
 3. Do NOT create a new branch. Stay on the current branch.
-4. After pushing, print the commit message and the branch pushed. Do not use any tools besides those listed in allowed-tools.
+4. After pushing, print the commit message and the branch pushed.

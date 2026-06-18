@@ -1,3 +1,6 @@
+# Source secrets (not tracked in dotfiles)
+[[ -f ~/.secrets ]] && source ~/.secrets
+
 #
 # History
 #
@@ -57,6 +60,7 @@ alias tree='eza --tree --git --group-directories-first --icons'
 alias cat='bat'
 alias ollama='ollama 2> >(grep -v "^MLX:" >&2)'
 alias clauded="claude --dangerously-skip-permissions"
+alias claudedw="claude --dangerously-skip-permissions --worktree"
 
 #
 # Completions

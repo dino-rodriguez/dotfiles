@@ -1,7 +1,6 @@
 ---
 name: docker-cleanup
 description: Audit Docker resource usage and clean up unused containers, images, build cache, and volumes
-allowed-tools: Bash(docker:*)
 ---
 
 ## Context
@@ -21,6 +20,6 @@ allowed-tools: Bash(docker:*)
    - `docker container prune -f --filter "until=72h"`
    - `docker image prune -f --filter "until=72h"`
    - `docker builder prune -f --filter "until=72h"`
-   - `docker volume prune -f`
+   - Volumes do **not** support time-based filtering — `docker volume prune` will remove **all** unused volumes regardless of age. List volumes first with `docker volume ls` and confirm with the user before running `docker volume prune -f`.
 
 3. Run `docker system df` to show reclaimed space.
