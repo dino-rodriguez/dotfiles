@@ -5,21 +5,18 @@ description: Audit Docker resource usage and clean up unused containers, images,
 
 ## Context
 
-- Docker disk usage (verbose): !`docker system df -v`
+- Docker disk usage: !`docker system df`
 - Running container stats: !`docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"`
-- Exited containers: !`docker ps -a --filter "status=exited" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Size}}"`
+- Exited containers: !`docker ps -a --filter "status=exited" --format "table {{.Names}}\t{{.Status}}\t{{.Size}}"`
 
 ## Instructions
 
-1. Summarize findings in a table format:
-   - **Disk**: build cache, images, stopped containers, volumes (with sizes)
-   - **RAM**: per-container memory usage vs Docker VM memory limit
-   - **CPU**: per-container CPU usage
+1. Summarize disk (images, containers, build cache, volumes), RAM (per-container vs VM limit), and CPU in a table.
 
-2. Run cleanup (skipping anything used in the last 72 hours):
-   - `docker container prune -f --filter "until=72h"`
-   - `docker image prune -f --filter "until=72h"`
-   - `docker builder prune -f --filter "until=72h"`
-   - Volumes do **not** support time-based filtering — `docker volume prune` will remove **all** unused volumes regardless of age. List volumes first with `docker volume ls` and confirm with the user before running `docker volume prune -f`.
+2. Run cleanup in this order (containers first so their pinned images become prunable):
+   - `docker container prune -f`
+   - `docker image prune -a -f`
+   - `docker builder prune -f`
+   - `docker volume prune -f`
 
 3. Run `docker system df` to show reclaimed space.

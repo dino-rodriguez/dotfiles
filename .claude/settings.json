@@ -119,8 +119,10 @@
       "Bash(gh repo delete:*)",
       "Bash(gh release delete:*)",
       "Bash(npm publish:*)"
-    ]
+    ],
+    "defaultMode": "bypassPermissions"
   },
+  "model": "claude-opus-4-8",
   "hooks": {
     "Stop": [
       {
@@ -140,13 +142,21 @@
   },
   "enabledPlugins": {
     "linear-cli@linear-cli": true,
-    "skill-creator@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": false,
     "sentry@claude-plugins-official": true
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    },
+    "claude-opus-4-8": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "light",
-  "editorMode": "vim",
-  "tui": "fullscreen"
+  "editorMode": "vim"
 }

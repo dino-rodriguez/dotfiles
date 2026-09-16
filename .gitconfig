@@ -16,3 +16,5 @@
 [delta]
     navigate = true
     line-numbers = true
+[safe]
+	directory = *
