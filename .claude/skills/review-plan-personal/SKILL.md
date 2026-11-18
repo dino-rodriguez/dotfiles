@@ -1,5 +1,5 @@
 ---
-name: review-plan
+name: review-plan-personal
 description: Critically review an implementation plan (or proposed change) for correctness, testing, performance, and architecture before any code is written. Use when asked to "review the plan", review a design/approach, or sanity-check a plan file before implementing.
 ---
 

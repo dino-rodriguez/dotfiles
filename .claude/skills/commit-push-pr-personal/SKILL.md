@@ -1,5 +1,5 @@
 ---
-name: commit-push-pr
+name: commit-push-pr-personal
 description: Commit, push, and open a pull request. Use when the user says things like "commit and PR", "commit push PR", "open a PR for SPE-1234", "submit this as a PR", "create a pull request", or references a Linear issue ID like SPE-XXXX and wants a PR.
 argument-hint: "[issue-id] [options]"
 ---

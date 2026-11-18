@@ -1,5 +1,5 @@
 ---
-name: docker-cleanup
+name: docker-cleanup-personal
 description: Audit Docker resource usage and clean up unused containers, images, build cache, and volumes
 ---
 

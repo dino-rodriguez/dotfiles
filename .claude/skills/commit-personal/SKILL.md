@@ -1,5 +1,5 @@
 ---
-name: commit
+name: commit-personal
 description: Commit all changes on the current branch using conventional commits
 ---
 

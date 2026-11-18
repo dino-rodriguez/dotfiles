@@ -1,5 +1,5 @@
 ---
-name: linear-create-issue
+name: linear-create-issue-personal
 description: Create a Linear issue, ticket, bug, or task. Use when asked to file, track, log, or add something to Linear. Handles status, priority, assignee, labels, project, cycle, and milestone.
 argument-hint: "[title or description]"
 ---

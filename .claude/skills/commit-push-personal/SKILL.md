@@ -1,5 +1,5 @@
 ---
-name: commit-push
+name: commit-push-personal
 description: Commit all changes and push to origin on the current branch using conventional commits
 ---
 
